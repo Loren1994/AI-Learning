@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/inspectionProfiles/
+__pycache__/
+.idea/*
+.DS_Store/*
+.DS_Store
