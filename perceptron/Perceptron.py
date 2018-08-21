@@ -1,4 +1,5 @@
 # AI - 感知器
+# 激活函数为阶跃函数 - 解决分类问题
 
 # 3和2差异
 # lambda a, b: a + b, map(lambda (x, w): x * w, zip(input_vec, self.weights))
@@ -9,7 +10,7 @@
 from functools import reduce
 
 
-class perceptron(object):
+class Perceptron():
     # 初始化感知器,设置参数个数,激活函数
     def __init__(self, input_num, activator):
         # 激活函数
@@ -31,7 +32,7 @@ class perceptron(object):
     def predict(self, input_vec):
         return self.activator(
             reduce(lambda a, b: a + b,
-                   [x * w for x, w in zip(input_vec, self.weights)], 0.0) + self.bias)
+                   [(x * w) for (x, w) in zip(input_vec, self.weights)], 0.0) + self.bias)
 
     # 输入训练数据：一组向量、与每个向量对应的label；以及训练轮数、学习率
     def train(self, input_vecs, labels, iteration, rate):
@@ -47,5 +48,5 @@ class perceptron(object):
 
     def _update_weight(self, output, input_vec, label, rate):
         delta = label - output
-        self.weights = [w + rate * delta * x for x, w in zip(input_vec, self.weights)]
+        self.weights = [(w + rate * delta * x) for (x, w) in zip(input_vec, self.weights)]
         self.bias += rate * delta

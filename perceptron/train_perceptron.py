@@ -1,9 +1,9 @@
 # 感知器训练测试
 
+from perceptron.Perceptron import Perceptron
+
+
 # 定义激活函数
-import perceptron
-
-
 def f(x: int):
     return 1 if x > 0 else 0
 
@@ -17,7 +17,7 @@ def get_training_data_sets():
 
 # 使用and真值表训练感知器
 def train_and_perceptron():
-    p = perceptron.perceptron(2, f)
+    p = Perceptron(2, f)
     input_vecs, labels = get_training_data_sets()
     p.train(input_vecs, labels, 10, 0.1)
     return p  # 训练好的感知器
